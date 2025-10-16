@@ -2,6 +2,10 @@
 
 This server accepts company formation data and generates Articles of Incorporation for Delaware, California, and New York corporations and LLCs.
 
+## Live Deployment
+
+🚀 **Production URL**: https://allenzhangyiteng-hw6-2eax8bp2c-allen-zhangs-projects-9e2899c0.vercel.app/
+
 ## Setup
 
 1. Install the required dependencies:
@@ -42,7 +46,22 @@ Send a POST request to `/form-company` with a JSON payload in the following form
 - **California (CA)**: Corporations and LLCs
 - **New York (NY)**: Corporations and LLCs
 
-## Example cURL Request:
+## Example cURL Requests:
+
+### Testing the Production Deployment:
+```bash
+# New York Corporation
+curl -X POST https://allenzhangyiteng-hw6-2eax8bp2c-allen-zhangs-projects-9e2899c0.vercel.app/form-company \
+  -H "Content-Type: application/json" \
+  -d '{"company_name": "Acme Corp, Inc.", "state_of_formation": "NY", "company_type": "corporation", "incorporator_name": "John Smith"}' > ny_corp.pdf
+
+# New York LLC
+curl -X POST https://allenzhangyiteng-hw6-2eax8bp2c-allen-zhangs-projects-9e2899c0.vercel.app/form-company \
+  -H "Content-Type: application/json" \
+  -d '{"company_name": "Empire State, LLC", "state_of_formation": "NY", "company_type": "LLC", "incorporator_name": "Jane Doe"}' > ny_llc.pdf
+```
+
+### Testing Locally:
 ```bash
 curl -X POST http://localhost:5000/form-company \
   -H "Content-Type: application/json" \
